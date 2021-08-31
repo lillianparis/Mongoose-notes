@@ -8,7 +8,7 @@ const data = {
   array: ["item1", "item2", "item3"],
   boolean: false,
   string:
-    "\"Don't worry if it doesn't work right. If everything did, you'd be out of a job\" - Mosher's Law of Software Engineering",
+    "\"Let's begin mongoose",
   number: 42
 };
 

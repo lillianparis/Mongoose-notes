@@ -6,7 +6,7 @@ const Schema = mongoose.Schema;
 // (Same as Sequelize, just a different language)
 const ExampleSchema = new Schema({
   // The example model has the field 'string'
-  // If its not filled out... the error message is "string is required"
+  // If this is not filled out... the error message is "string is required"
   string: {
     type: String,
     trim: true,
