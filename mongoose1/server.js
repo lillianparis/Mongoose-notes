@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const Example = require("./exampleModel.js");
+const Example = require("./model.js");
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/dbExample", { useNewUrlParser: true });
 // If you delete 42, the error string message will appear. Because in the model it requires a number
