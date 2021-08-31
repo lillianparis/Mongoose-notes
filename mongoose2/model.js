@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+const Schema = mongoose.Schema;
 
 
 // you can do const schema = mongoose.schema w/ const exampleSchema = new Schema ({
@@ -8,12 +8,8 @@ const mongoose = require('mongoose');
 // 'required' is used for true/false. A field is required in order for this model to be saved.
 // if you are using an email, you'll need to use the "unique:'
 // 'default: Date.now' means the date is being saved as an ISO date for right now
-const musicSchema = new mongoose.Schema({
-    artist: String,
-    title: {
-        title: String,
-        required: true,
-    }
+const musicSchema = new Schema({
+ 
 })
 
 
