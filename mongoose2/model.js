@@ -9,20 +9,23 @@ const Schema = mongoose.Schema;
 // if you are using an email, you'll need to use the "unique:'
 // 'default: Date.now' means the date is being saved as an ISO date for right now
 const musicSchema = new Schema({
- 
-})
-
-
-
-musicSchema.methods.speak = function speak() {
-    const type = this.name
-      ? "What type of music do you like " + this.name
-      : "I don't know";
-    console.log(type);
-  };
-  
+  artist: objectId,
+  song: String,
+  album: String
+});
 
 const music = mongoose.model('music', musicSchema);
 
+const song1 = new music({ artist: 'Introduction to Mongoose', song: 10, album: 25 });
+ 
+    // save model to database
+    song1.save(function (err, music) {
+      if (err) return console.error(err);
+      console.log(music.name + " saved to song collection.");
+    });
+
+
+
+  
 module.exports = music;
 
