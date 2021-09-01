@@ -1,31 +1,14 @@
-const express = require("express");
-
-const mongoose = require("mongoose");
-
-const PORT = process.env.PORT || 3000;
-
-const User = require("./userModel.js");
+const express = require('express');
 const app = express();
+const mongoose = require('mongoose');
+const grocery = require('./userModel');
 
-app.use(logger("dev"));
+const db = 'mongodb://localhost/mongoose4';
 
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+mongoose.connect(db);
 
-app.use(express.static("public"));
+const port = 8080;
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/userdb", { useNewUrlParser: true });
-
-app.post("/submit", ({ body }, res) => {
-  User.create(body)
-    .then(dbUser => {
-      res.json(dbUser);
-    })
-    .catch(err => {
-      res.json(err);
-    });
-});
-
-app.listen(PORT, () => {
-  console.log(`App running on port ${PORT}!`);
-});
+app.listen(port, function (){ 
+  console.log('app listening on port' + port)
+})
