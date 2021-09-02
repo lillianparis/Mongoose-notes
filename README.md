@@ -45,8 +45,10 @@
 - `$ npm install mongoose --save`
 - Connect to the MongoDB database. For example, i've opened a connection to a databse that i've called 'mongoose-notes' using the `connect` function.
 - Insert into index.js file:
-- `const mongoose = require('mongoose)`
-- `mongoose.connect('mongodb://localhost/mongoose-notes');`
+```
+const mongoose = require('mongoose)
+mongoose.connect('mongodb://localhost/mongoose-notes');
+```
 - The `connect` function takes in two other optional parameters. 
 - You can use this for example:
 
