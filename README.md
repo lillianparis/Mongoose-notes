@@ -49,7 +49,18 @@
 - `mongoose.connect('mongodb://localhost/mongoose-notes');`
 - The `connect` function takes in two other optional parameters. 
 - You can use this for example:
--
+
+```
+var mongoose = require('mongoose');
+ 
+mongoose.connect('mongodb://localhost/mongoose_basics', function (err) {
+ 
+   if (err) throw err;
+ 
+   console.log('Successfully connected');
+ 
+});
+```
 
 ### Mongoose Schema 
 
