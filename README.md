@@ -147,3 +147,12 @@ shepherdName.save(function(err){
 - The example starts by creating and saving a `shepherdObject` thats breated from the Name model.
 - Inside the save function of the `ShepherdObject`, if an error occurs, the application will output an ecxeption. 
 - When the save is successful, inside the `save` function, the new objects will be saved. 
+
+### Validating Data Before Saving
+
+- It is a good idea to validate before saving a model to MongoDB.
+`validate:...`
+
+
+### Searching for and updating data
+
