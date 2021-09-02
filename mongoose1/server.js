@@ -1,21 +1,30 @@
 const mongoose = require("mongoose");
+const express = require('express');
+const fs = require('fs');
 
-const Example = require("./model.js");
+const App = express();
+
+applicationCache.use(express.static(path.join(_dirname, 'public')))
+
+const model = require("./models.js");
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/dbExample", { useNewUrlParser: true });
 // If you delete 42, the error string message will appear. Because in the model it requires a number
-const data = {
-  array: ["item1", "item2", "item3"],
-  boolean: false,
-  string:
-    "\"Let's begin mongoose",
-  number: 42
-};
+mongoose.model('users', { name: String });
+mongoose.model('posts', { content: String });
 
-Example.create(data)
-  .then(dbExample => {
-    console.log(dbExample);
-  })
-  .catch(({ message }) => {
-    console.log(message);
+fs.readdirSync(__dirname + '/models').forEach(function (filename {
+  if (~filename.indexOf('.js')) require(__dirname + '/models/' + filename')
+});
+
+app.get('/users', function (req, res) {
+    mongoose.model('users').find(function (err, users) {
+      res.send(users);
+    });
   });
+
+app.get('/posts', function (req, res) {
+  mongoose.model('posts').find(function (err, posts) {
+    res.send(posts);
+  });
+});
