@@ -2,10 +2,10 @@
 
 ## Mongoose VS. MongoDB
 
-- Brief introductions tot he differences between Mongoose and MongoDB. 
+- Brief introductions tot he differences between Mongoose and MongoDB.
 - Brief examples and installation procedure.
 
-### Mongoose 
+### Mongoose
 
 - Mongoose is a popular npm package.
 - Known as the ODM (Object Document Mapper. A code library that converts the transfer of data stored in database tables into objects.
@@ -14,7 +14,6 @@
 - Once a schema is defined, then you can create a model based on a specific schema.
 - Once you have defined your schemas and models, Mongoose contains several functions that allow you to validate, save, delete, and query your data using similar MongoDb functions.
 
-
 ### MongoDB
 
 - MongoDb is a database that stores your data as documents. (JSON Structure).
@@ -22,11 +21,18 @@
 - Scalable and consistent
 - Uses the Mongo Shell
 - MongoDB has a flexible data model, making it easier to change data within your application
+- Layout:
 
+```
+{
+  Breed: "Sheperd",
+  firstName: "Max"
+}
+```
 
 ## Creating a MongoDb/Mongoose Database
 
-- A Quick Tutorial 
+- A Quick Tutorial
 
 ### Setting up Mongo
 
@@ -45,36 +51,55 @@
 - `$ npm install mongoose --save`
 - Connect to the MongoDB database. For example, i've opened a connection to a databse that i've called 'mongoose-notes' using the `connect` function.
 - Insert into index.js file:
+
 ```
 const mongoose = require('mongoose)
 mongoose.connect('mongodb://localhost/mongoose-notes');
 ```
-- The `connect` function takes in two other optional parameters. 
+
+- The `connect` function takes in two other optional parameters.
 - You can use this for example:
 
 ```
-var mongoose = require('mongoose');
- 
+const mongoose = require('mongoose');
+
 mongoose.connect('mongodb://localhost/mongoose_basics', function (err) {
- 
+
    if (err) throw err;
- 
+
    console.log('Successfully connected');
- 
+
 });
 ```
+
 - If an error occurs when connecting to your database, the error is thrown and all further proccesses are stopped.
 
-### Mongoose Schema 
+### Defining a Mongoose Schema
 
-- (shape of the document)/(Array, Boolean, Number, String, etc.).
-- Everything in Mongoose starts with a Schema. 
-- Each schema maps to a MongoDB collection and defines the shape of the document within the collection.
+- In the mongoDb layout, i've converted the document into a mongoose schema:
 
-### Model
+```
+const dogSchema = mongoose.Schema({
+    Breed: String,
+    firstName: String
+});
+```
+
+- This is a very basic schema that contains two properties with no attributes associated with it.
+- You can convert the Breed and firstName properties to be child objects of a `name` property.
+
+```
+const dogSchema = mongoose.Schema({
+    name: {
+        breed: String,
+    firstName: String
+    },
+    created: Date
+});
+```
+- Mongoose allows you to create flexible schemas with many different possible combinations of how you can organize your data.
+
+### Creating and Saving Mongoose Models
 
 - A compiled version of the schema. When you call `mongoose.model()` on a Schema, mongoose compiles a model for you.
-- Defines the programming interface for interacting with the database (create, fetch, update, delete,  ect.)
-
-
-
+- Defines the programming interface for interacting with the database (create, fetch, update, delete, ect.)
