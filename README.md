@@ -1,5 +1,8 @@
 # Welcome to a Guide for Mongoose
 
+![mongoose](https://user-images.githubusercontent.com/62733242/131912430-9244ee69-e1a1-409d-bf1f-c9a869e906eb.jpg)
+
+
 ## Mongoose VS. MongoDB
 
 - Brief introductions tot he differences between Mongoose and MongoDB.
