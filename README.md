@@ -7,22 +7,49 @@
 
 ### Mongoose 
 
-- Mongoose is a node package.
-- Mongoose uses schemas for documents, providing more convenience whe creating and managing data in MongoDB.
-- Although if you want to use mongo shell, then use MongoDB. (Simplier). The downside being larger lines of code for validating data.
+- Mongoose is a popular npm package.
+- Known as the ODM (Object Document Mapper. A code library that converts the transfer of data stored in database tables into objects.
+- Mongoose gives us the power to organize our database by using schemas.
+- Allows you to define objects with a schema that is mapped to a MongoDB document.
+- Once a schema is defined, then you can create a model based on a specific schema.
+- Once you have defined your schemas and models, Mongoose contains several functions that allow you to validate, save, delete, and query your data using similar MongoDb functions.
+
 
 ### MongoDB
 
-- Manages storage and efficient retrival and processing of data.
-- Scalable and consistant.
-- Collections that hold documents. 
+- MongoDb is a database that stores your data as documents. (JSON Structure).
+- The documents are then saved to collections.
+- Scalable and consistent
+- Uses the Mongo Shell
+- MongoDB has a flexible data model, making it easier to change data within your application
 
 
-## Getting started
+## Creating a MongoDb/Mongoose Database
+
+- A Quick Tutorial 
+
+### Setting up Mongo
 
 - Make sure to have MongoDB and Node.js installed
+- [Mongo Installation](https://www.mongodb.com/try?jmp=nav#community)
+- Create a MongoDB database
+- [Create a Mongo Database](https://docs.mongodb.com/manual/administration/install-community/)
+- Make sure you have node.js downloaded
+- [Node installation](https://nodejs.org/en/download/)
 
-`$ npm install mongoose --save`
+### Setting up Mongoose
+
+- Make a new directory for your Mongoose code
+- `npm init`
+- Install mongoose and mongoose.connect
+- `$ npm install mongoose --save`
+- Connect to the MongoDB database. For example, i've opened a connection to a databse that i've called 'mongoose-notes' using the `connect` function.
+- Insert into index.js file:
+- `const mongoose = require('mongoose)`
+- `mongoose.connect('mongodb://localhost/mongoose-notes');`
+- The `connect` function takes in two other optional parameters. 
+- You can use this for example:
+-
 
 ### Mongoose Schema 
 
