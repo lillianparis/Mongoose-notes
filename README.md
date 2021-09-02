@@ -63,6 +63,7 @@ mongoose.connect('mongodb://localhost/mongoose_basics', function (err) {
  
 });
 ```
+- If an error occurs when connecting to your database, the error is thrown and all further proccesses are stopped.
 
 ### Mongoose Schema 
 
