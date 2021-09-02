@@ -20,6 +20,9 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/budget", {
   useFindAndModify: false
 });
 
+let db = mongoose.connection;
+db.once("open", () => console.log("connected to database"));
+
 // routes 
 app.use(require("./routes/api.js"));
 
