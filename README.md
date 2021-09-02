@@ -26,7 +26,7 @@
 ```
 {
   Breed: "Sheperd",
-  firstName: "Max"
+  dogName: "Max"
 }
 ```
 
@@ -63,7 +63,7 @@ mongoose.connect('mongodb://localhost/mongoose-notes');
 ```
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/mongoose_basics', function (err) {
+mongoose.connect('mongodb://localhost/mongoose_notes', function (err) {
 
    if (err) throw err;
 
@@ -81,7 +81,7 @@ mongoose.connect('mongodb://localhost/mongoose_basics', function (err) {
 ```
 const dogSchema = mongoose.Schema({
     Breed: String,
-    firstName: String
+    dogName: String
 });
 ```
 
@@ -92,7 +92,7 @@ const dogSchema = mongoose.Schema({
 const dogSchema = mongoose.Schema({
     name: {
         breed: String,
-    firstName: String
+    dogName: String
     },
     created: Date
 });
@@ -101,5 +101,9 @@ const dogSchema = mongoose.Schema({
 
 ### Creating and Saving Mongoose Models
 
-- A compiled version of the schema. When you call `mongoose.model()` on a Schema, mongoose compiles a model for you.
-- Defines the programming interface for interacting with the database (create, fetch, update, delete, ect.)
+- Continuting the Breed and dogName schema:
+```
+const name = mongoose.model('name', nameSchema);
+```
+- A Mongoose Model, when saved, created a document in the MongoDB with the properties defined by the schema it's derived from.
+- To demonstrate creating and saving an object, in the next example, Iam going to create several objects. 
