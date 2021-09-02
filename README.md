@@ -28,7 +28,7 @@
 
 ```
 {
-  Breed: "Sheperd",
+  dogBreed: "Sheperd",
   dogName: "Max"
 }
 ```
@@ -83,7 +83,7 @@ mongoose.connect('mongodb://localhost/mongoose_notes', function (err) {
 
 ```
 const dogSchema = mongoose.Schema({
-    Breed: String,
+    dogBreed: String,
     dogName: String
 });
 ```
@@ -94,19 +94,56 @@ const dogSchema = mongoose.Schema({
 ```
 const dogSchema = mongoose.Schema({
     name: {
-        breed: String,
+        dogBreed: String,
     dogName: String
     },
     created: Date
 });
 ```
 - Mongoose allows you to create flexible schemas with many different possible combinations of how you can organize your data.
+```
+const dogSchema = mongoose.Schema({
+    name: {
+        dogBreed: String,
+    dogName: String
+    },
+    Description: String,
+    Coloring: String,
+    Toy: String,
+    Created: {
+        type: Date,
+        default: Date.now
+    }
+});
+```
+- Above I have added several strings to the schema, as well as a current date. 
 
 ### Creating and Saving Mongoose Models
 
 - Continuting the Breed and dogName schema:
 ```
-const name = mongoose.model('name', nameSchema);
+const Name = mongoose.model('Name', nameSchema);
 ```
 - A Mongoose Model, when saved, created a document in the MongoDB with the properties defined by the schema it's derived from.
-- To demonstrate creating and saving an object, in the next example, Iam going to create several objects. 
+- To demonstrate creating and saving an object, in the next example, I am going to create several objects. 
+```
+const shepherdName = new Name {
+    _id: new mongoose.Types.ObjectId(),
+    name: {
+        dogBreed: 'Shepherd',
+        dogName: 'Max',
+    },
+    Description: 'timid, quiet, friendly',
+    Coloring: 'Brown and grey',
+    Toy: 'plush toy duck'
+};
+
+shepherdName.save(function(err){
+    iff(err) throw err;
+
+    console.log('Dog Breed Successfuly Saved')
+});
+```
+- The example starts by creating and saving a `shepherdObject` thats breated from the Name model.
+- Inside the save function of the `ShepherdObject`, if an error occurs, the application will output an ecxeption. 
+- When the save is successful, inside the `save` function, the new objects will be saved. 
