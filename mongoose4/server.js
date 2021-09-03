@@ -1,14 +1,28 @@
-const express = require('express');
+const express = require("express");
+const mongoose = require("mongoose");
+
+// Specify the port 
+const PORT = process.env.PORT || 3000;
+
 const app = express();
-const mongoose = require('mongoose');
-const grocery = require('./userModel');
 
-const db = 'mongodb://localhost/mongoose4';
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
-mongoose.connect(db);
+app.use(express.static("public"));
 
-const port = 8080;
+// Mongoose onnection creating
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/shopping", {
+  useNewUrlParser: true,
+  useFindAndModify: false
+});
 
-app.listen(port, function (){ 
-  console.log('app listening on port' + port)
-})
+let db = mongoose.connection;
+db.once("open", () => console.log("connected to database"));
+
+
+app.listen(PORT, () => {
+  console.log(`App running on port ${PORT}!`);
+});
+
+
