@@ -148,11 +148,41 @@ shepherdName.save(function(err){
 - Inside the save function of the `ShepherdObject`, if an error occurs, the application will output an ecxeption. 
 - When the save is successful, inside the `save` function, the new objects will be saved. 
 
-### Validating Data Before Saving
+### Create your Seeder file
 
-- It is a good idea to validate before saving a model to MongoDB.
-`validate:...`
+- In order to view the collection from your schema in your Mongo Shell, you will need a seeder file
+
+```
+const mongoose = require('mongoose');
+const Shepherd = require('../model')
+
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/people", { useNewUrlParser: true, useUnifiedTopology: true  }, {versionKey: false});
+
+let db = mongoose.connection;
+
+db.once("open", () => console.log('connected'));
+
+Dog.deleteMany({}).then(() => console.log('deleted'))
 
 
-### Searching for and updating data
+const dog = new Shepherd ({
+    dogBreed: 'Shepherd',
+    dogName: 'Max',
+    Description: 'timid, quiet, friendly',
+    Coloring: 'Brown and grey',
+    Toy: 'plush toy duck'
+  });
 
+  human.save().then(saved => console.log(saved));
+
+// How long to wait until the database closes, closes connection
+  setTimeout(() => {
+
+    db.close();
+
+  },
+2000
+  ) 
+  ```
+
+.... not finished

@@ -1,6 +1,3 @@
-const mongoose = ('mongoose');
-const Schema = mongoose.Schema;
-
 // Require the use of mongoose
 const mongoose = require("mongoose");
 
@@ -12,12 +9,11 @@ const Schema = mongoose.Schema;
 const grocerySchema = new Schema({
   name: {
     type: String,
-    trim: true,
-    required: "Enter a grocery name"
+    require: true,
   },
   value: {
     type: Number,
-    required: "Enter a cost"
+    require: true,
   },
   date: {
     type: Date,

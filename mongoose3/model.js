@@ -1,15 +1,25 @@
-// This is how a model is created
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
+// Creating the schema
+const Schema = mongoose.Schema;
 
-let peopleSchema = new mongoose.Schema ({
-    name: {type: string, required: true },
+// Creating the transaction Schema
+// Enter the transaction name, amount and the date is going to be saved as the current date of deposit or withdrawl
+const peopleSchema = new Schema({
+  name: {
+    firstName: String,
+    lastName: String,
+  },
+  value: {
     age: Number,
-    favoriteFoods: [String]
-})
+  },
+  date: {
+    type: Date,
+    default: Date.now
+  }
+});
 
-let Person = mongoose.model('Person', peopleSchema)
+// Making our model
+const People = mongoose.model("People", peopleSchema);
 
-let Michelle = new Person({name: 'Alex', age: '20', favoriteFoods: ['Pasta', 'Wings']})
-
-console.log(Michelle)
+module.exports = People;

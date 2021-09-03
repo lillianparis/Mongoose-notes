@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 
 // Specify the port 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8000;
 
 const app = express();
 
@@ -20,6 +20,10 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/shopping", {
 
 let db = mongoose.connection;
 db.once("open", () => console.log("connected to database"));
+
+// app.get('/', function (req, res) {
+//     res.render('userModel', {});
+// })
 
 
 app.listen(PORT, () => {
