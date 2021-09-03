@@ -7,11 +7,13 @@ let db = mongoose.connection;
 
 db.once("open", () => console.log('connected'));
 
-Grocery.deleteMany({}).then(() => console.log('deleted'))
+Grocery.deleteMany({}).then(() => console.log('deleted')).catch(err => console.log(err))
 
 const purchases = [{name: "Grapes", value: 2}, {name: "orange", value: 2}, {name: "tomato", value: 2}]
 
-Grocery.create(purchases).then(purchases => console.log(purchases))
+// Lets you know what error is in your schema .catch(err => console.log(err))
+
+Grocery.create(purchases).then(purchases => console.log(purchases)).catch(err => console.log(err))
 
 // const purchase = new Grocery ({
 //     name: "Apples",
