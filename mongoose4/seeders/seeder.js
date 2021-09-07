@@ -1,3 +1,5 @@
+// Here is our seeder file. When we seed a database we are providing the initial set of data for our database. 
+// Here we are requiring mongoose and connecting our seeder file to our models file.
 const mongoose = require('mongoose');
 const Grocery = require('../userModel')
 

@@ -1,3 +1,4 @@
+// Require mongoose
 const express = require("express");
 const mongoose = require("mongoose");
 
@@ -11,7 +12,7 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-// Mongoose onnection creating
+// Creating mongoose connection
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/shopping", {
   useNewUrlParser: true,
@@ -20,10 +21,6 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/shopping", {
 
 let db = mongoose.connection;
 db.once("open", () => console.log("connected to database"));
-
-// app.get('/', function (req, res) {
-//     res.render('userModel', {});
-// })
 
 
 app.listen(PORT, () => {
