@@ -17,6 +17,7 @@ const purchases = [{name: "Grapes", value: 2}, {name: "orange", value: 2}, {name
 
 Grocery.create(purchases).then(purchases => console.log(purchases)).catch(err => console.log(err))
 
+// To create one grocery item
 // const purchase = new Grocery ({
 //     name: "Apples",
 //     value: 2,
