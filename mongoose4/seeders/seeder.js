@@ -6,16 +6,17 @@ const Grocery = require('../userModel')
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/shopping", { useNewUrlParser: true, useUnifiedTopology: true  }, {versionKey: false});
 
+// Setting up the mongoose connection
 let db = mongoose.connection;
 
 db.once("open", () => console.log('connected'));
 
 Grocery.deleteMany({}).then(() => console.log('deleted')).catch(err => console.log(err))
 
+// Creating multiple grocery items
 const purchases = [{name: "Grapes", value: 2}, {name: "orange", value: 2}, {name: "tomato", value: 2}]
 
 // Lets you know what error is in your schema .catch(err => console.log(err))
-
 Grocery.create(purchases).then(purchases => console.log(purchases)).catch(err => console.log(err))
 
 // To create one grocery item
