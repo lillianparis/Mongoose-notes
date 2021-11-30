@@ -7,6 +7,7 @@
 
 - Brief introductions tot he differences between Mongoose and MongoDB.
 - Brief examples and installation procedure.
+- (Using Mongo Shell)
 
 ### Mongoose
 
